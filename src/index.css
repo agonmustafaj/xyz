@@ -1,0 +1,90 @@
+@import 'tailwindcss';
+
+@theme {
+  --color-primary: #f8dde8;
+  --color-secondary: #e9a9c5;
+  --color-accent: #c58aa7;
+  --color-bg: #fff9fb;
+  --color-text: #27232a;
+  --color-bg-alt: #f4eaf0;
+  --font-sans: 'Plus Jakarta Sans', ui-sans-serif, system-ui, sans-serif;
+  --font-serif: 'Instrument Serif', ui-serif, Georgia, serif;
+}
+
+@layer base {
+  html {
+    scroll-behavior: smooth;
+  }
+
+  body {
+    margin: 0;
+    min-height: 100vh;
+    background-color: var(--color-bg);
+    color: var(--color-text);
+    font-family: var(--font-sans);
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    overflow-x: hidden;
+  }
+
+  ::selection {
+    background-color: var(--color-secondary);
+    color: var(--color-text);
+  }
+
+  :focus-visible {
+    outline: 2px solid var(--color-accent);
+    outline-offset: 3px;
+  }
+}
+
+@layer utilities {
+  .font-serif {
+    font-family: var(--font-serif);
+  }
+
+  .text-balance {
+    text-wrap: balance;
+  }
+
+  .hairline {
+    border-color: color-mix(in srgb, var(--color-accent) 35%, transparent);
+  }
+
+  .grain {
+    position: fixed;
+    inset: 0;
+    pointer-events: none;
+    z-index: 50;
+    opacity: 0.045;
+    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+    background-repeat: repeat;
+    background-size: 180px 180px;
+  }
+
+  .grid-faint {
+    background-image:
+      linear-gradient(color-mix(in srgb, var(--color-accent) 12%, transparent) 1px, transparent 1px),
+      linear-gradient(90deg, color-mix(in srgb, var(--color-accent) 12%, transparent) 1px, transparent 1px);
+    background-size: 64px 64px;
+  }
+
+  .pink-glow {
+    background: radial-gradient(
+      ellipse 70% 55% at 70% 40%,
+      color-mix(in srgb, var(--color-primary) 80%, transparent) 0%,
+      color-mix(in srgb, var(--color-secondary) 25%, transparent) 35%,
+      transparent 70%
+    );
+  }
+
+  .cursor-none-desktop {
+    cursor: none;
+  }
+
+  @media (max-width: 1023px) {
+    .cursor-none-desktop {
+      cursor: auto;
+    }
+  }
+}
